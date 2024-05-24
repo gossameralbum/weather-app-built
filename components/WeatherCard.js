@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import WeatherIcon from './WeatherIcon';
-import colors from '../theme'; // Import the colors object
+import colors from '../theme';
 
 const WeatherCard = ({ weatherData }) => {
   const opacity = useRef(new Animated.Value(0)).current;
