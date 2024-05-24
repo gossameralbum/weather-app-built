@@ -1,4 +1,3 @@
-// components/WeatherIcon.js
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';

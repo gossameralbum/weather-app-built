@@ -1,6 +1,3 @@
-import WeatherIcon from "./components/WeatherIcon";
-
-// src/theme.js
 const colors = {
     background: '#ffecd2', // Light peach
     primary: '#ff6b6b',    // Raspberry

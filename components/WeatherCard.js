@@ -1,4 +1,3 @@
-// components/WeatherCard.js
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import WeatherIcon from './WeatherIcon';

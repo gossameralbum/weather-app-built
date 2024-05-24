@@ -1,9 +1,9 @@
-// screens/HomeScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import WeatherCard from '../components/WeatherCard';
 import { fetchWeather } from '../services/WeatherService';
-import colors from '../theme'; // Import the colors object
+import Toast from 'react-native-toast-message';
+import colors from '../theme';
 
 const HomeScreen = () => {
   const [city, setCity] = useState('');
@@ -13,6 +13,14 @@ const HomeScreen = () => {
     const data = await fetchWeather(city);
     if (data) {
       setWeatherData(data);
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'City not found. Please check the spelling and try again.',
+        visibilityTime: 3000,
+        swipeable: true,
+      });
     }
   };
 
