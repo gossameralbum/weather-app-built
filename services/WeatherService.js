@@ -27,7 +27,6 @@ export const fetchWeather = async (city) => {
     const response = await fetch(`${BASE_URL}&q=${encodeURIComponent(trimmedCity)}&units=metric`);
     if (!response.ok) {
       if (response.status === 404) {
-        // Try with the broader city name
         const broaderResponse = await fetch(`${BASE_URL}&q=${encodeURIComponent(broaderCity)}&units=metric`);
         if (!broaderResponse.ok) {
           throw new Error('City not found');

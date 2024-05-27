@@ -8,7 +8,7 @@ import Toast from 'react-native-toast-message';
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#ffecd2" />
+      <StatusBar backgroundColor="#ffecd2" />
       <HomeScreen />
       <Toast ref={(ref) => Toast.setRef(ref)} />
     </SafeAreaView>
