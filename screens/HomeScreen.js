@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import WeatherCard from '../components/WeatherCard';
 import { fetchWeather } from '../services/WeatherService';
 import CityAutocomplete from '../components/CityAutocomplete';
-import colors from '../theme'; // Import the colors object
+import colors from '../theme';
 
 const HomeScreen = () => {
   const [city, setCity] = useState('');
