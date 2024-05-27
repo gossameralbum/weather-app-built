@@ -9,7 +9,7 @@ const handleCityNotFound = (errorMessage) => {
     type: 'error',
     text1: 'Error',
     text2: errorMessage,
-    position: 'bottom',
+    position: 'top',
     visibilityTime: 4000,
     autoHide: true,
     topOffset: 30,
