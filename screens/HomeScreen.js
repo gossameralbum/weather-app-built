@@ -1,40 +1,27 @@
+
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import WeatherCard from '../components/WeatherCard';
 import { fetchWeather } from '../services/WeatherService';
-import Toast from 'react-native-toast-message';
-import colors from '../theme';
+import CityAutocomplete from '../components/CityAutocomplete';
+import colors from '../theme'; // Import the colors object
 
 const HomeScreen = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
 
-  const handleFetchWeather = async () => {
-    const data = await fetchWeather(city);
+  const handleFetchWeather = async (selectedCity) => {
+    const data = await fetchWeather(selectedCity);
     if (data) {
       setWeatherData(data);
-    } else {
-      Toast.show({
-        type: 'error',
-        text1: 'Error',
-        text2: 'City not found. Please check the spelling and try again.',
-        visibilityTime: 3000,
-        swipeable: true,
-      });
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Weather</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter city"
-        placeholderTextColor={colors.textSecondary}
-        value={city}
-        onChangeText={setCity}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleFetchWeather}>
+      <CityAutocomplete onSelectCity={(selectedCity) => setCity(selectedCity)} />
+      <TouchableOpacity style={styles.button} onPress={() => handleFetchWeather(city)}>
         <Text style={styles.buttonText}>Get Weather</Text>
       </TouchableOpacity>
       {weatherData && <WeatherCard weatherData={weatherData} />}
@@ -55,17 +42,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: colors.primary,
     fontWeight: 'bold',
-  },
-  input: {
-    height: 50,
-    borderColor: colors.secondary,
-    borderWidth: 1,
-    borderRadius: 25,
-    paddingHorizontal: 20,
-    marginBottom: 20,
-    width: '80%',
-    backgroundColor: colors.textPrimary,
-    color: colors.textSecondary,
   },
   button: {
     backgroundColor: colors.primary,
